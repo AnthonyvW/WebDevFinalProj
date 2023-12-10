@@ -1,10 +1,37 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}490 Speedruns{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static '490Speedruns.css' %}">
     </head>
     <body>
-
+        <header>
+            <nav>
+                <span class="speedrun-title">
+                    490 Speedruns
+                </span>
+                <span>
+                    <a href="{% url 'index' %}">Home</a>
+                </span>
+                <span>
+                    {% if user.is_authenticated %}
+                        Welcome <strong>{{ user.username }}!</strong>
+                        <a href="">Log Out</a>
+                    {% else %}
+                        <a href="">Log In</a>
+                        <a href="">Register</a>
+                    {% endif %}
+                </span>
+            </nav>
+        </header>
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
     </body>
 
 </html>
