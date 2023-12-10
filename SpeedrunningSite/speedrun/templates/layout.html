@@ -11,19 +11,19 @@
     <body>
         <header>
             <nav>
-                <span class="speedrun-title">
-                    490 Speedruns
+                <span>
+                    <a class = "speedrun-nav-text speedrun-title" href="{% url 'index' %}">490 Speedruns</a>
                 </span>
                 <span>
-                    <a href="{% url 'index' %}">Home</a>
+                    <a class = "speedrun-nav-text"  href="{% url 'index' %}">Games</a>
                 </span>
                 <span>
                     {% if user.is_authenticated %}
                         Welcome <strong>{{ user.username }}!</strong>
-                        <a href="">Log Out</a>
+                        <a class = "speedrun-nav-text" href="">Log Out</a>
                     {% else %}
-                        <a href="">Log In</a>
-                        <a href="">Register</a>
+                        <a class = "speedrun-nav-text" href="">Log In</a>
+                        <a class = "speedrun-nav-text" href="">Sign In</a>
                     {% endif %}
                 </span>
             </nav>
@@ -32,6 +32,17 @@
             {% block main %}
             {% endblock %}
         </main>
+        <footer>
+            <span>
+                <a class = "speedrun-footer-text" href="{% url 'contact_us' %}">Contact us</a>
+            </span>
+            <br>
+            <br>
+            <span>
+                <a class = "speedrun-footer-text" href="https://github.com/AnthonyvW/WebDevFinalProj">Source Code</a>
+            </span>
+            
+        </footer>
     </body>
 
 </html>
