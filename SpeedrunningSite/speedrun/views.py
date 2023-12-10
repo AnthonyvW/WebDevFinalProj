@@ -42,6 +42,11 @@ def register_view(request):
         username = request.POST["username"]
         email = request.POST["email"]
 
+        # if username is None:
+        #     return render(request, "register.html", {
+        #         "message": "Please enter a username."
+        #     })
+
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
