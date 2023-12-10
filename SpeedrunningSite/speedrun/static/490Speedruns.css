@@ -3,7 +3,7 @@
     color: rgb(250, 250, 250);
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding-right: 20px;
+    margin-right: 20px !important;
 }
 
 .speedrun-title {
@@ -11,12 +11,17 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.speedrun-search {
+    margin-right: 20px !important;
+}
+
 nav {
     background-color: #007be0;
-    padding: 10px;
+    padding: 5px;
     padding-left: 20%;
     padding-right: 20%;
 }
+
 body {
     margin: 0px;
     background-color: #404049;
@@ -25,6 +30,27 @@ main {
     margin-left: 20%;
     margin-right: 20%;
 }
+
+article {
+    background-color: rgb(93, 98, 119);
+    font-size: 18px;
+    color: rgb(250, 250, 250);
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.speedrun-game-selection-header{
+    background-color: rgb(52, 53, 59);
+}
+
+.speedrun-button{
+    background-color: #007be0;
+    font-size: 18px;
+    color: rgb(250, 250, 250);
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 footer {
     background: #37373d;
     padding: 20px 0 20px 0;
