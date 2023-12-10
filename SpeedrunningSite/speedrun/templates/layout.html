@@ -20,10 +20,10 @@
                 <span>
                     {% if user.is_authenticated %}
                         Welcome <strong>{{ user.username }}!</strong>
-                        <a class = "speedrun-nav-text" href="">Log Out</a>
+                        <a class = "speedrun-nav-text" href="{% url 'logout' %}">Log Out</a>
                     {% else %}
-                        <a class = "speedrun-nav-text" href="">Log In</a>
-                        <a class = "speedrun-nav-text" href="">Sign In</a>
+                        <a class = "speedrun-nav-text" href="{% url 'login' %}">Log In</a>
+                        <a class = "speedrun-nav-text" href="{% url 'register' %}">Sign In</a>
                     {% endif %}
                 </span>
             </nav>
