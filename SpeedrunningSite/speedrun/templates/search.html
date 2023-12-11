@@ -7,7 +7,7 @@
         </div>
         <div class="search-browser rounded-bottom">
             {% for game in content %}
-            <a type="button" class="game-preview search-browser-item" href="{% url 'game' title=game %}">
+            <a type="button" class="game-preview search-browser-item" href="{% url 'game' title=game.title %}">
                 <img class = "game-browser-img mx-auto" src="{{game.image.url}}">
                 <div class="game-browser-title">{{ game.title }}</div>
             </a>
