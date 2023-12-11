@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <article class="container rounded m-4 px-0">
+        <div class = "speedrun-game-selection-header py-3 px-4 rounded-top">
+            <h2>Search Results for '{{title}}'</h2>
+        </div>
+        <div class="search-browser rounded-bottom">
+            {% for game in content %}
+            <a type="button" class="game-preview search-browser-item" href="{% url 'game' title=game %}">
+                <img class = "game-browser-img mx-auto" src="{{game.image.url}}">
+                <div class="game-browser-title">{{ game.title }}</div>
+            </a>
+            
+            {% endfor %}
+        </div>
+    </article>
+
+
+{% endblock %}

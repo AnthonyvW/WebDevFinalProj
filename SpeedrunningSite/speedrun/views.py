@@ -13,6 +13,21 @@ from .forms import GameForm, SpeedrunForm
 def index(request):
     return render(request, "index.html", {'games': Game.objects.all()})
 
+def search(request):
+    if request.method == "POST":
+        
+        item = request.POST['q'].strip()
+
+        games = Game.objects.all()
+        if item.lower() in map(str.lower, [i.title.lower() for i in games]):
+            return redirect("game", title=item)
+        return render(
+            request, "search.html", {
+                "title": item,
+                "content" : [i for i in games if item.lower() in i.title.lower()]
+            }
+        )
+
 def contact_us(request):
     return render(request, "contact_us.html")
 
