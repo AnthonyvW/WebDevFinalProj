@@ -62,7 +62,7 @@ article {
     object-fit: cover;
     width: 90%;
     height: 87%;
-    padding-top: 5%;
+    margin-top: 5%;
     border-radius : 15px;
 }
 
@@ -123,6 +123,10 @@ p > label{
     justify-content: center;
 }
 
-ul{
-    color:red;
+.errorlist{
+    color:rgb(226, 226, 226);
+    background-color: rgb(235, 46, 46);
+    border-radius : 5px;
+    padding: 10px;
+    list-style: none;
 }

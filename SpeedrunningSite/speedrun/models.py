@@ -10,7 +10,7 @@ class Profile(models.Model):
      profilePicture = models.ImageField(upload_to="media/profile_pictures", default="media/default_pictures/default_user.jpeg")
 
 class Game(models.Model):
-    title = models.CharField(max_length=64)
+    title = models.CharField(max_length=64, unique=True)
     description = models.TextField(max_length=512)
     image = models.ImageField(upload_to='images/games')
     platforms = models.ManyToManyField('Platform', blank=True, related_name="platforms")
