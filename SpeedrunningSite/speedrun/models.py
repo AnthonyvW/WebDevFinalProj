@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 class Profile(models.Model):
      creator =  models.ForeignKey(User, on_delete=models.CASCADE)
-     profilePicture = models.ImageField(upload_to="media/profile_pictures", default="media/default_pictures/default_user.jpeg")
+     profilePicture = models.ImageField(upload_to="media/profile_pictures", blank=True)
 
 class Game(models.Model):
     title = models.CharField(max_length=64, unique=True)

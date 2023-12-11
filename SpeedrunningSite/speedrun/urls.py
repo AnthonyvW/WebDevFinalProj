@@ -9,6 +9,7 @@ urlpatterns = [
 
     path("", views.index, name="index"),
     path("contact_us", views.contact_us, name="contact_us"),
+    path("profile/<str:username>/", views.profile, name="profile"),
     path("new_game", views.new_game, name="new_game"),
     path("random_game", views.random_game, name="random_game"),
     path("game/<str:title>", views.game, name="game"),

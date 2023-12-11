@@ -7,7 +7,7 @@ from django.db import IntegrityError
 
 from random import choice
 
-from .models import User, Game
+from .models import User, Profile, Game
 from .forms import GameForm, SpeedrunForm
 
 def index(request):
@@ -46,19 +46,30 @@ def register_view(request):
         username = request.POST["username"]
         email = request.POST["email"]
 
-        # if username is None:
-        #     return render(request, "register.html", {
-        #         "message": "Please enter a username."
-        #     })
+        if username == "":
+            return render(request, "register.html", {
+                "message": "Please enter a username."
+            })
+        
+        if email == "":
+            return render(request, "register.html", {
+                "message": "Please enter a valid email."
+            })
 
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
+
+        if password == "":
+            return render(request, "register.html", {
+                "message": "Please enter a password."
+            })
+
         if password != confirmation:
             return render(request, "register.html", {
                 "message": "Passwords must match."
             })
-
+        
         # Attempt to create new user
         try:
             user = User.objects.create_user(username, email, password)
@@ -71,6 +82,19 @@ def register_view(request):
         return redirect("index")
     else:
         return render(request, "register.html")
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+
+    profile = Profile.objects.get(user=user)
+
+    name = user.username
+    pfp = profile.profile_picture
+
+    return render(request, "user_profile.html", {
+        "name": name,
+        "pfp": pfp
+    })
 
 @login_required(login_url='login')
 def new_game(request):
