@@ -10,7 +10,7 @@
     <div class="game-browser rounded-bottom">
         {% for game in games %}
         <div class="game-preview">
-            <img class = "game-browser-img mx-auto" src="{{game.image.url}}">
+            <img class = "game-browser-img mx-auto" src="{{ game.image.url }}">
             
             <div class="game-browser-title">{{ game.title }}</div>
         </div>
