@@ -1,12 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator 
 
 class User(AbstractUser): 
     pass
 
 class Profile(models.Model):
-    user =  models.ForeignKey(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to="media/profile_pictures", blank=True)
+     creator =  models.ForeignKey(User, on_delete=models.CASCADE)
+     profilePicture = models.ImageField(upload_to="media/profile_pictures", blank=True)
 
-    # def getPic(self):
-    #     return self.profile_picture
+class Game(models.Model):
+    title = models.CharField(max_length=64)
+    description = models.TextField(max_length=512)
+    image = models.ImageField(upload_to='images/games', blank=True)
+    platforms = models.ManyToManyField('Platform', blank=True, related_name="platforms")
+
+class Platform(models.Model):
+    name = models.CharField(max_length=64)
+    
+    def __str__(self):
+        return self.name
+
+class Speedrun(models.Model):
+    created_at = models.DateTimeField(auto_now=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="speedruns")
+    time_in_seconds = models.IntegerField(validators=[MinValueValidator(0)])
+    video_link = models.TextField(max_length=512)
