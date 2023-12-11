@@ -5,9 +5,9 @@ from django.core.validators import MinValueValidator
 class User(AbstractUser): 
     pass
 
-# class Profile(models.Model):
-#     creator =  models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
-#     profilePicture = models.ImageField()
+class Profile(models.Model):
+    creator =  models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
+    profilePicture = models.ImageField()
 
 class Game(models.Model):
     title = models.CharField(max_length=64)
