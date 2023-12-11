@@ -9,4 +9,5 @@ urlpatterns = [
 
     path("", views.index, name="index"),
     path("contact_us", views.contact_us, name="contact_us"),
+    path("profile/<str:username>/", views.profile, name="profile"),
 ]

@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 
-from .models import User
+from .models import User, Profile
 
 def index(request):
     return render(request, "index.html")
@@ -42,19 +42,30 @@ def register_view(request):
         username = request.POST["username"]
         email = request.POST["email"]
 
-        # if username is None:
-        #     return render(request, "register.html", {
-        #         "message": "Please enter a username."
-        #     })
+        if username == "":
+            return render(request, "register.html", {
+                "message": "Please enter a username."
+            })
+        
+        if email == "":
+            return render(request, "register.html", {
+                "message": "Please enter a valid email."
+            })
 
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
+
+        if password == "":
+            return render(request, "register.html", {
+                "message": "Please enter a password."
+            })
+
         if password != confirmation:
             return render(request, "register.html", {
                 "message": "Passwords must match."
             })
-
+        
         # Attempt to create new user
         try:
             user = User.objects.create_user(username, email, password)
@@ -67,3 +78,16 @@ def register_view(request):
         return redirect("index")
     else:
         return render(request, "register.html")
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+
+    profile = Profile.objects.get(user=user)
+
+    name = user.username
+    pfp = profile.profile_picture
+
+    return render(request, "user_profile.html", {
+        "name": name,
+        "pfp": pfp
+    })
