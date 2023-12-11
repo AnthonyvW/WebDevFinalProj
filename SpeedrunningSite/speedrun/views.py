@@ -4,10 +4,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 
-from .models import User
+from .models import User, Game
+from .forms import GameForm, SpeedrunForm
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "index.html", {'games': Game.objects.all()})
 
 def contact_us(request):
     return render(request, "contact_us.html")
@@ -67,3 +68,21 @@ def register_view(request):
         return redirect("index")
     else:
         return render(request, "register.html")
+
+def new_game(request):
+    if request.method == "POST":
+        if "cancel" in request.POST: 
+            return redirect('index')
+        form = GameForm(request.POST, request.FILES)
+        if form.is_valid():
+            game = form.save(commit=False)
+            game.creator = request.user
+            game.save()
+            form.save_m2m()
+            messages.success(request, f'Game created successfully!')
+            return redirect("index")
+        else:
+            messages.error(request, 'Problem creating the game. Details below.')	
+    else: 
+        form = GameForm()
+    return render(request, "new_game.html", {'form':form})

@@ -9,4 +9,5 @@ urlpatterns = [
 
     path("", views.index, name="index"),
     path("contact_us", views.contact_us, name="contact_us"),
+    path("new_game", views.new_game, name="new_game"),
 ]

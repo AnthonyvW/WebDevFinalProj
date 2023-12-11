@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+
+{% block main %}
+
+    {% for m in messages %}
+        <h2 class="{{m.tags}}">{{m}}</h2>
+    {% endfor %}
+    <article class="container rounded m-4 px-0" id="new_game_article">
+        <div class = "speedrun-game-selection-header py-3 px-4 rounded-top">
+            <h2>Create Game</h2>
+            <form action="{% url 'new_game' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn speedrun-button m10 my-2" name="cancel" value="Cancel" formnovalidate="formnovalidate">
+                <input type="reset" class="btn speedrun-button m10" name="reset" value="Reset">
+                <input type="submit" class="btn speedrun-button m10" name="submit" value="Create Listing">
+                </div>
+            </form>
+        </div>
+    </article>
+    
+{% endblock %}
