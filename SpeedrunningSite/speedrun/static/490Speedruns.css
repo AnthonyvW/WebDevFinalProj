@@ -51,6 +51,11 @@ article {
     background-color: rgb(52, 53, 59);
 }
 
+.register-header{
+    background-color: rgb(52, 53, 59);
+    height: fit-content;
+}
+
 .game-browser{
     background-color: rgb(93, 98, 119);
     padding: 0.5%;

@@ -1,29 +1,29 @@
 {% extends 'layout.html' %}
 
 {% block main %}
-
-    <h2>Login</h2>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <input type="submit" value="Login">
-        <input type="hidden" name="next" value="{{ next }}">
-    
-    </form>
-
-    <p>
-        Don't have an account? <a href="{% url 'register' %}">Register here.</a>
-    </p>
-
-
+<article class="container rounded m-4 px-0" id="new_game_article">
+    <div class = "register-header py-3 px-4 rounded">
+        {% if message %}
+            <p class="errorlist">{{message}}</p>
+        {% endif %}
+        <h2>Log In</h2>
+        <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <input type="submit" class="btn speedrun-button m10 my-2" value="Login">
+            </form>
+            <p>
+                Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+            </p>
+            </div>
+        </form>
+    </div>
+</article>
 {% endblock %}
