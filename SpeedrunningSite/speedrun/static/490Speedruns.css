@@ -122,3 +122,7 @@ p > label{
     display: flex;
     justify-content: center;
 }
+
+ul{
+    color:red;
+}

@@ -12,7 +12,7 @@ class Profile(models.Model):
 class Game(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField(max_length=512)
-    image = models.ImageField(upload_to='images/games', blank=True)
+    image = models.ImageField(upload_to='images/games')
     platforms = models.ManyToManyField('Platform', blank=True, related_name="platforms")
 
 class Platform(models.Model):
