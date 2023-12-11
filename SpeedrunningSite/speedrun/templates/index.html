@@ -4,14 +4,13 @@
 
 <article class="container rounded m-4 px-0">
     <div class = "speedrun-game-selection-header py-3 px-4 rounded-top">
-        <button type="button" class="btn speedrun-button">Random Game</button>
+        <a type="button" class="btn speedrun-button" href="{% url 'random_game' %}">Random Game</a>
         <a type="button" class="btn speedrun-button float-right" href="{% url 'new_game' %}">Add Game</a>
     </div>
     <div class="game-browser rounded-bottom">
         {% for game in games %}
         <a type="button" class="game-preview" href="{% url 'game' game.title %}">
             <img class = "game-browser-img mx-auto" src="{{game.image.url}}">
-            
             <div class="game-browser-title">{{ game.title }}</div>
         </a>
         

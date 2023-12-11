@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 
+from random import choice
+
 from .models import User, Game
 from .forms import GameForm, SpeedrunForm
 
@@ -88,6 +90,12 @@ def new_game(request):
     else: 
         form = GameForm()
     return render(request, "new_game.html", {'form':form})
+
+def random_game(request):
+    return render(request, "game.html", {
+        'game': choice(Game.objects.all())
+    })
+    
 
 def game(request, title):
     game = get_object_or_404(Game, title=title)

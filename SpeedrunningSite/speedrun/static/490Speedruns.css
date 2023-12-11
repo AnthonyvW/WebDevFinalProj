@@ -1,7 +1,7 @@
 .speedrun-nav-text {
     font-size: 20px;
-    color: rgb(250, 250, 250);
-    text-decoration: none;
+    color: rgb(250, 250, 250) !important;
+    text-decoration: none !important;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-right: 20px !important;
 }
@@ -68,8 +68,10 @@ article {
 
 .game-browser-title{
     text-align: center;
+    color: rgb(250, 250, 250);
     flex-basis: 100%;
     margin-top: 5px;
+    text-decoration: none;
 }
 
 .game-preview{
@@ -122,8 +124,8 @@ article {
 .speedrun-button{
     background-color: #007be0;
     font-size: 18px;
-    color: rgb(250, 250, 250);
-    text-decoration: none;
+    color: rgb(250, 250, 250) !important;
+    text-decoration: none !important;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
