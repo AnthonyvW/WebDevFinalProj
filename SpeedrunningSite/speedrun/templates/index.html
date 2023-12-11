@@ -5,9 +5,9 @@
 <article class="container rounded m-4 px-0">
     <div class = "speedrun-game-selection-header py-3 px-4 rounded-top">
         <button type="button" class="btn speedrun-button">Random Game</button>
-        <button type="button" class="btn speedrun-button float-right">Add Game</button>
+        <a type="button" class="btn speedrun-button float-right" href="{% url 'new_game' %}">Add Game</a>
     </div>
-    <div>
+    <div class="game-browser rounded-bottom">
         Hello World.
     </div>
 </article>
