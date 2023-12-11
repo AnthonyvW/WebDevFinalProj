@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+
+{% block main %}
+
+
+<article class="container m-4 px-0">
+    <div class = "game-view-header py-3 px-4"><div class="container">
+        <div class="row">
+          <div class="col-md-auto game-view-image-container">
+            <img class = "game-view-image mx-auto" src="{{game.image.url}}">
+          </div>
+          <div class="col-sm">
+            <h2>{{game.title}}</h2>
+            <p>{{game.description}}</p>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="game-view-options">
+        <a type="button" class="btn speedrun-button" href="{% url 'new_game' %}">Add Speedrun</a>
+    </div>
+    <div class="game-view-speedruns rounded-bottom">
+        <div>Speedrun</div>
+    </div>
+</article>
+{% endblock %}

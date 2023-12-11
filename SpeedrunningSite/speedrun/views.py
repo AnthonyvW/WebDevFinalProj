@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseServerError
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -69,6 +70,7 @@ def register_view(request):
     else:
         return render(request, "register.html")
 
+@login_required(login_url='login')
 def new_game(request):
     if request.method == "POST":
         if "cancel" in request.POST: 
@@ -86,3 +88,16 @@ def new_game(request):
     else: 
         form = GameForm()
     return render(request, "new_game.html", {'form':form})
+
+def game(request, title):
+    game = get_object_or_404(Game, title=title)
+    if request.method == 'POST':
+        clicked = request.POST["doit"]
+        if clicked == "add-comment":
+            return redirect('add-comment', title=title)
+        else:
+            return HttpResponseServerError(f'Unknown button clicked')
+    else:
+        return render(request, "game.html", {
+            'game': game
+        })

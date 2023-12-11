@@ -9,11 +9,11 @@
     </div>
     <div class="game-browser rounded-bottom">
         {% for game in games %}
-        <div class="game-preview">
+        <a type="button" class="game-preview" href="{% url 'game' game.title %}">
             <img class = "game-browser-img mx-auto" src="{{game.image.url}}">
             
             <div class="game-browser-title">{{ game.title }}</div>
-        </div>
+        </a>
         
         {% endfor %}
     </div>
