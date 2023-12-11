@@ -37,7 +37,7 @@
                       <ul class="navbar-nav mr-auto">
                         {% if user.is_authenticated %}
                         <li>
-                            <span class = "speedrun-nav-text">{{ user.username }}</span>
+                            <span class = "speedrun-nav-text"><a href="{% url 'profile' user.username %}">{{ user.username }}</a></span>
                         </li>
                         <li>
                             <a class = "speedrun-nav-text text-nowrap " href="{% url 'logout' %}">Log Out</a>

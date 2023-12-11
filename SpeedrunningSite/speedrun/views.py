@@ -81,11 +81,13 @@ def register_view(request):
         return render(request, "register.html")
 
 def profile(request, username):
+    # user = get_object_or_404(User, username=username)
+    # profile = Profile.objects.get(creator=user)
+
     user = User.objects.get(username=username)
+    profile = Profile.objects.get(creator=user)
 
-    profile = Profile.objects.get(user=user)
-
-    name = user.username
+    name = profile.creator.username
     pfp = profile.profile_picture
 
     return render(request, "user_profile.html", {
