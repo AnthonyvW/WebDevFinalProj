@@ -4,11 +4,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 
-from .models import User
+from .models import User, Game
 from .forms import GameForm, SpeedrunForm
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "index.html", {'games': Game.objects.all()})
 
 def contact_us(request):
     return render(request, "contact_us.html")
